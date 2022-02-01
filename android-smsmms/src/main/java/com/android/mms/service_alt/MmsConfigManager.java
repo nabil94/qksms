@@ -82,7 +82,11 @@ public class MmsConfigManager {
                     new IntentFilter("LOADED");
 
             try {
-                context.registerReceiver(mReceiver, intentFilterLoaded);
+                
+				/* ********OpenRefactory Warning********
+				 A receiver is registered without specifying any broadcast permission
+				*/
+				context.registerReceiver(mReceiver, intentFilterLoaded);
             } catch (Exception e) {
 
             }
