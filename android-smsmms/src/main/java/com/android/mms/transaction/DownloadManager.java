@@ -21,7 +21,7 @@ import com.klinker.android.send_message.BroadcastUtils;
 import com.klinker.android.send_message.MmsReceivedReceiver;
 
 import java.io.File;
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -59,7 +59,7 @@ public class DownloadManager {
         context.getApplicationContext().registerReceiver(receiver, new IntentFilter(receiver.mAction));
 
         Log.v(TAG, "receiving with system method");
-        final String fileName = "download." + String.valueOf(Math.abs(new Random().nextLong())) + ".dat";
+        final String fileName = "download." + String.valueOf(Math.abs(new SecureRandom().nextLong())) + ".dat";
         File mDownloadFile = new File(context.getCacheDir(), fileName);
         Uri contentUri = (new Uri.Builder())
                 .authority(context.getPackageName() + ".MmsFileProvider")
