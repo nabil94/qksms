@@ -16,7 +16,10 @@ public class BroadcastUtils {
     public static void sendExplicitBroadcast(Context context, Intent intent, String action) {
         addClassName(context, intent, action);
         intent.setAction(action);
-        context.sendBroadcast(intent);
+        /* ********OpenRefactory Warning********
+		 Broadcasting message should specify receiver permission.
+		*/
+		context.sendBroadcast(intent);
     }
 
     public static void addClassName(Context context, Intent intent, String action) {
